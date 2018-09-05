@@ -2,6 +2,7 @@
 ### Java template
 # Compiled class file
 /target/
+/.mvn/
 /logs/
 *.class
 /tom-system/

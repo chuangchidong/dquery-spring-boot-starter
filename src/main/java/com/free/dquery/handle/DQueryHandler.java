@@ -33,13 +33,21 @@ import java.util.*;
  */
 public class DQueryHandler {
 
-    // 访问session
+    /**
+     * 访问session
+     */
     private SessionFactory sessionFactory;
-    // 动态查询
+    /**
+     * 动态查询
+     */
     private DQuery dQuery;
-    // 切点方法
+    /**
+     * 切点方法
+     */
     private Method method;
-    // 分页信息
+    /**
+     * 分页信息
+     */
     private PageInfo pageInfo;
 
     private ScriptEngine engine;
@@ -80,13 +88,15 @@ public class DQueryHandler {
     private Object query(List queryParameters, String sql, Method method) throws InstantiationException, IllegalAccessException, ClassNotFoundException, ParseException {
         Type[] types = null;
 
-        //获取返回值类型
+        // 获取返回值类型
         Class<?> returnType = method.getReturnType();
         // 获取指定方法的返回值泛型信息
         Type genericReturnType = method.getGenericReturnType();
 
-        if (genericReturnType instanceof ParameterizedType) {// 判断获取的类型是否是参数类型
-            types = ((ParameterizedType) genericReturnType).getActualTypeArguments();// 强制转型为带参数的泛型类型，
+        // 判断获取的类型是否是参数类型
+        if (genericReturnType instanceof ParameterizedType) {
+            // 强制转型为带参数的泛型类型
+            types = ((ParameterizedType) genericReturnType).getActualTypeArguments();
         }
 
         if (returnType.isArray() || Collection.class.isAssignableFrom(returnType)) {

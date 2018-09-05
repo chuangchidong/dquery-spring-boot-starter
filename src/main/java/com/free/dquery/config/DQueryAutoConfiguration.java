@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.jpa.vendor.HibernateJpaSessionFactoryBean;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 
@@ -20,7 +19,6 @@ import javax.annotation.PostConstruct;
  * @author zhangzhidong
  * @date 2018/6/13
  */
-@Transactional
 @Configuration
 public class DQueryAutoConfiguration extends AbstractPointcutAdvisor {
 

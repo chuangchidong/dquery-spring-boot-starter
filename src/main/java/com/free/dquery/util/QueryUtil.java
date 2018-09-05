@@ -24,7 +24,9 @@ import java.util.regex.Pattern;
  * @date 2017/11/14
  */
 public class QueryUtil {
-    // 下划线
+    /**
+     * 下划线
+     */
     public static final char UNDERLINE = '_';
 
     /**
@@ -45,7 +47,8 @@ public class QueryUtil {
         SQLQuery sqlQuery = setQueryAndParam(sql, param, session);
         if (page != null && size != null) {
             sqlQuery.setFirstResult((page - 1) * size);
-            sqlQuery.setMaxResults(page * size);//(这个数为几则要几条)
+            // (这个数为几则要几条)
+            sqlQuery.setMaxResults(page * size);
         }
         List list = sqlQuery.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();
         session.close();
@@ -192,8 +195,9 @@ public class QueryUtil {
      * @throws InstantiationException
      */
     public static Object mapToObject(Map<String, Object> mapValue, Class<?> beanClass) throws IllegalAccessException, InstantiationException, ParseException {
-        if (mapValue == null)
+        if (mapValue == null) {
             return null;
+        }
 
         String filedName;
         Map<String, Object> map = new HashMap<>();

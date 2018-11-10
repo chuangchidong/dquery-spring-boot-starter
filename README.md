@@ -17,13 +17,17 @@ https://github.com/chuangchidong/dquery.git
 ```
 在jpa的Repository的文件中使用 @DQuery动态查询；
 > sqlHead 为查询SQL语句的主体部分
+
 > dynamicSql 为SQL的拓展部分，根据条件动态增加
+
 > @DynamicSql中sql为追加的查询SQL；conditions是根据方法的参数值判断拓展SQL是否追加到最终执行的SQL中去
+
 > 查询的结果可自动转化为javabean对象，包括数组和分页数据，
 
 
 ###### 目的
 > 解决JPA使用的关联表查询中，无法返回自定义的结果；解决JPA使用Specification、Criteria、@SqlResultSetMappings等繁琐操作来完成关联表操作
+
 > 解决实际业务中查询条件不固定，业务代码需要些太多判断
 
 

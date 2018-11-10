@@ -28,7 +28,7 @@ https://github.com/chuangchidong/dquery.git
 ###### 目的
 > 解决JPA使用的关联表查询中，无法返回自定义的结果；解决JPA使用Specification、Criteria、@SqlResultSetMappings等繁琐操作来完成关联表操作
 
-> 解决实际业务中查询条件不固定，业务代码需要些太多判断
+> 解决实际业务中查询条件不固定，业务代码需要写太多判断
 
 
 ###### 存在问题

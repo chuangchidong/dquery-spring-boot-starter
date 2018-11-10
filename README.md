@@ -8,22 +8,22 @@ https://github.com/chuangchidong/dquery.git
 ###### 举例
 项目下载编译，在自己的应用程序pom中加入引用，你懂得😉
 ```xml
-        <dependency>
-			<groupId>com.free.dquery</groupId>
-			<artifactId>dquery-spring-boot-starter</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+     <dependency>
+	<groupId>com.free.dquery</groupId>
+	<artifactId>dquery-spring-boot-starter</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+    </dependency>
 ```
 
 > 代码示例
 
 ```java
-    @DQuery(sqlHead = "select barcode,other_barcode from t_store_goods_other_barcode where is_deleted=0  ",
+@DQuery(sqlHead = "select barcode,other_barcode from t_store_goods_other_barcode where is_deleted=0  ",
             dynamicSql = {
                     @DynamicSql(sql = " and barcode in (:barcodeList)",conditions = "barcodeList !=null "),
                     @DynamicSql(sql = " and store_id = :storeId",conditions = "storeId !=null && storeId > 0 "),
             })
-    List<GoodsBarcodeAndOtherCodeData> findGoodsOtherBarcodesByStoreIdAndBarcodeListStr(@Param("storeId") Long storeId, @Param("barcodeList") List<String> barcodeList);
+List<GoodsBarcodeAndOtherCodeData> findGoodsOtherBarcodesByStoreIdAndBarcodeListStr(@Param("storeId") Long storeId, @Param("barcodeList") List<String> barcodeList);
 
 ```
 在jpa的Repository的文件中使用 @DQuery动态查询；

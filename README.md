@@ -6,6 +6,17 @@ dquery 动态查询的springboot自动配置starter方法
 https://github.com/chuangchidong/dquery.git
 
 ###### 举例
+项目下载编译，在自己的应用程序pom中加入引用，你懂得😉
+```xml
+        <dependency>
+			<groupId>com.free.dquery</groupId>
+			<artifactId>dquery-spring-boot-starter</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+```
+
+> 代码示例
+
 ```java
     @DQuery(sqlHead = "select barcode,other_barcode from t_store_goods_other_barcode where is_deleted=0  ",
             dynamicSql = {
@@ -29,7 +40,6 @@ https://github.com/chuangchidong/dquery.git
 > 解决JPA使用的关联表查询中，无法返回自定义的结果；解决JPA使用Specification、Criteria、@SqlResultSetMappings等繁琐操作来完成关联表操作
 
 > 解决实际业务中查询条件不固定，业务代码需要写太多判断
-
 
 ###### 存在问题
 

@@ -28,21 +28,19 @@ public class DQueryAutoConfiguration extends AbstractPointcutAdvisor {
 
     private Advice advice;
 
-    @Autowired
-    private SessionFactory sessionFactory;
+	private SessionFactory sessionFactory;
 
-    @Bean
-    public HibernateJpaSessionFactoryBean sessionFactory() {
-        return new HibernateJpaSessionFactoryBean();
-    }
+	@Autowired
+	private EntityManagerFactory entityManagerFactory;
 
-    @PostConstruct
-    public void init() {
-        logger.info("init DQueryAutoConfiguration start");
-        this.pointcut = new AnnotationMatchingPointcut(null, DQuery.class);
-        this.advice = new DQueryMethodInterceptor(sessionFactory);
-        logger.info("init DQueryAutoConfiguration end");
-    }
+	@PostConstruct
+	public void init() {
+		logger.info("init DQueryAutoConfiguration start");
+		sessionFactory = entityManagerFactory.unwrap(SessionFactory.class);
+		this.pointcut = new AnnotationMatchingPointcut(null, DQuery.class);
+		this.advice = new DQueryMethodInterceptor(sessionFactory);
+		logger.info("init DQueryAutoConfiguration end");
+	}
 
     @Override
     public Pointcut getPointcut() {
